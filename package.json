@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "express": "^4.19.2",
+    "mime": "^4.0.4",
+    "yargs": "^17.7.2"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #video-list {
+      margin-bottom: 20px;
+    }
+    video {
+      width: 100%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Videos</h1>
+  <ul id="video-list"></ul>
+  <script>
+    // Fetch the list of available videos
+    fetch('/videos')
+      .then(response => response.json())
+      .then(files => {
+        const videoList = document.getElementById('video-list');
+        files.forEach(file => {
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `/video/${file}`;
+          link.textContent = file;
+          listItem.appendChild(link);
+          videoList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error fetching video list:', error));
+  </script>
+</body>
+</html>
