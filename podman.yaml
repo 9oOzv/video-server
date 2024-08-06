@@ -28,8 +28,9 @@ spec:
         - containerPort: 80
         - containerPort: 443
         volumeMounts:
-        - mountPath: /etc/nginx/templates
-          name: nginx-templates
+        - mountPath: /etc/nginx/nginx.conf
+          name: nginx-config
+          subPath: nginx.conf
         - mountPath: /etc/letsencrypt
           name: etc-letsencrypt
         - mountPath: /usr/share/nginx/html
@@ -55,9 +56,9 @@ spec:
       - mountPath: /usr/share/nginx/html
         name: nginx-html
       volumes:
-      - name: nginx-templates
+      - name: nginx-config
         configMap:
-          name: nginx-templates
+          name: nginx-config
       - name: etc-letsencrypt
         hostPath:
           path: ./data/letsencrypt
