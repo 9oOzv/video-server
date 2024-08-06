@@ -4,5 +4,8 @@
     "express": "^4.19.2",
     "mime": "^4.0.4",
     "yargs": "^17.7.2"
+  },
+  "scripts": {
+    "start": "node server.mjs start"
   }
 }
