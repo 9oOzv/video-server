@@ -91,7 +91,8 @@ spec:
         - mountPath: /app
           name: node-app
         workingDir: /app
-        command: ["npm", "start"]
+        command: ["sleep", "3600"]
+        # command: ["npm", "start"]
       - name: nginx
         image: nginx:alpine
         ports:
@@ -105,21 +106,23 @@ spec:
           name: etc-letsencrypt
         - mountPath: /usr/share/nginx/html
           name: nginx-html
+        command: ["sleep", "3600"]
       - name: certbot
         image: certbot/certbot
-        command: ["sh", "-c"]
-        args:
-        - |
-          certbot \
-              certonly \
-              -d example.com \
-              --webroot \
-              --webroot-path=/usr/share/nginx/html \
-              --email $CERTBOT_EMAIL \
-              --agree-tos \
-              --no-eff-email \
-              --staging \
-              --test-cert
+        command: ["sleep", "3600"]
+        # command: ["sh", "-c"]
+        # args:
+        # - |
+        #   certbot \
+        #       certonly \
+        #       -d example.com \
+        #       --webroot \
+        #       --webroot-path=/usr/share/nginx/html \
+        #       --email $CERTBOT_EMAIL \
+        #       --agree-tos \
+        #       --no-eff-email \
+        #       --staging \
+        #       --test-cert
       volumeMounts:
       - mountPath: /etc/letsencrypt
         name: etc-letsencrypt
